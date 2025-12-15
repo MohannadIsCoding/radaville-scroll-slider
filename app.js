@@ -121,7 +121,7 @@ const scrollDown = () => {
   gsap.set(split.words, { yPercent: 100 })
   slider.appendChild(nextSlide)
   gsap.set(nextSlide, {
-    y: `${(9 * slideDataImages.length)}%`,
+    y: `${(32 * slideDataImages.length)}%`,
     z: 11 * slideDataImages.length,
     opacity: 0
   })
@@ -172,7 +172,7 @@ const scrollUp = () => {
 
   slider.prepend(nextSlide)
   gsap.set(nextSlide, {
-    y: `${(9 * -1)}%`,
+    y: `${(32 * -1)}%`,
     z: 11 * -1,
     opacity: 0
   })
