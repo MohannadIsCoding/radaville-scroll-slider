@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => initializingSlider())
 let wheelAccumulator = 0
 const wheelThreshold = 100
 let isWheelActive = false
-const timeout = 1200;
+const timeout = 1100;
 container.addEventListener(
   'wheel',
   (e) => {
@@ -100,6 +100,11 @@ const changeSlideDirection = (direction = 'down') => {
     scrollUp()
 }
 
+const getRandomNumberBetween = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+
 const scrollDown = () => {
   let slides = document.querySelectorAll('.slide')
   let firstSlide = slides[0]
@@ -123,12 +128,14 @@ const scrollDown = () => {
   gsap.set(nextSlide, {
     y: `${(32 * slideDataImages.length)}%`,
     z: 11 * slideDataImages.length,
-    opacity: 0
+    opacity: 0,
+    rotation: getRandomNumberBetween(-15, 15),
   })
   let updatedSlides = document.querySelectorAll('.slide')
   updatedSlides.forEach((slide, i) => {
     let targetPosition = i - 1;
     gsap.to(slide, {
+      rotation: 0,
       y: `${(9 * targetPosition)}%`,
       z: 11 * targetPosition,
       opacity: targetPosition < 0 ? 0 : 1,
